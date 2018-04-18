@@ -129,7 +129,7 @@ Back1=Back1[as.numeric(as.character(Back1$上車交易時間))>50000,]
   BackTimeIdeal<-read.csv("CSV/D幹線公車/O12各到站時間_往中崙.csv",header=T)
   GoTimeIdeal<-read.csv("CSV/D幹線公車/O12各到站時間_往長庚.csv",header=T)
 }
-
+ 
 #單一司機單一日期單趟上下車關係圖
 #GB=Go1或Back1  Driver=1~14  Date=20170212~20170218
 GBPD<-function(GB,Driver,Date){
