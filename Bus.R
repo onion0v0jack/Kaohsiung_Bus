@@ -1,8 +1,8 @@
-rm(list=ls())  #²M°£©Ò¦³¼È¦s
-graphics.off() #²M°£¹Ï¤ùªºÅã¥Ü
-getwd()        #Åã¥Ü³o­Ór©Ò¦bªº¸ô®|
+rm(list=ls())  #æ¸…é™¤æ‰€æœ‰æš«å­˜
+graphics.off() #æ¸…é™¤åœ–ç‰‡çš„é¡¯ç¤º
+getwd()        #é¡¯ç¤ºé€™å€‹ræ‰€åœ¨çš„è·¯å¾‘
 
-#¨Ï¥Îªºlibrary
+#ä½¿ç”¨çš„library
 {
   library(xlsx)
   library(dplyr)
@@ -13,9 +13,9 @@ getwd()        #Åã¥Ü³o­Ór©Ò¦bªº¸ô®|
   library(RColorBrewer)
   library(ggmap)
 }
-#¥s¸ê®Æ
-O12<-fread("CSV/D·F½u¤½¨®/O12§¹¦¨.csv",header = T,,data.table=F)
-#ª¦ÂÎ¯¸¦W»P¯¸µP½s¸¹
+#å«è³‡æ–™
+O12<-fread("CSV/Då¹¹ç·šå…¬è»Š/O12å®Œæˆ.csv",header = T,,data.table=F)
+#çˆ¬èŸ²ç«™åèˆ‡ç«™ç‰Œç·¨è™Ÿ
 {
   library(XML)
   library("methods")
@@ -38,284 +38,284 @@ O12<-fread("CSV/D·F½u¤½¨®/O12§¹¦¨.csv",header = T,,data.table=F)
   Data2<-as.data.frame(Data2)
 }
 
-#¾ã²z¸ê®Æ
-#±Nª¦ÂÎ¤U¨Óªº¯¸µP¥N½X¸ê®ÆData2¡A¿ï¾Ü¯¸¦WnameZh»P¥h¦^µ{GoBack
-#¯¸µP¦WºÙ¦³³¡¤À®t²§¡A¥B¦³¨Ç¦b«áÄò¨Ï¥Îªºjaccard¤èªk(¥Ø«e¨Ï¥Î³Ì¦n)·|³y¦¨»~®t¡A©Ò¥HÁÙ¬O­×¥¿¤@¨ÇÅãµÛªº®t²§
-#e.g.:¦pªG¤£§âData2ªº"«Ø°ê¸ô¤f(«C¦~¸ô¤G¬q)"§ï¦¨"«Ø°ê¸ô¤f"¡A"«Ø°ê¸ô¤f"¤Ï¦Ó·|³Q°»´ú¬°"°ê¥ú¸ô¤f"
+#æ•´ç†è³‡æ–™
+#å°‡çˆ¬èŸ²ä¸‹ä¾†çš„ç«™ç‰Œä»£ç¢¼è³‡æ–™Data2ï¼Œé¸æ“‡ç«™ånameZhèˆ‡å»å›ç¨‹GoBack
+#ç«™ç‰Œåç¨±æœ‰éƒ¨åˆ†å·®ç•°ï¼Œä¸”æœ‰äº›åœ¨å¾ŒçºŒä½¿ç”¨çš„jaccardæ–¹æ³•(ç›®å‰ä½¿ç”¨æœ€å¥½)æœƒé€ æˆèª¤å·®ï¼Œæ‰€ä»¥é‚„æ˜¯ä¿®æ­£ä¸€äº›é¡¯è‘—çš„å·®ç•°
+#e.g.:å¦‚æœä¸æŠŠData2çš„"å»ºåœ‹è·¯å£(é’å¹´è·¯äºŒæ®µ)"æ”¹æˆ"å»ºåœ‹è·¯å£"ï¼Œ"å»ºåœ‹è·¯å£"åè€Œæœƒè¢«åµæ¸¬ç‚º"åœ‹å…‰è·¯å£"
 BusStop=Data2%>%
-  mutate(nameZh=mapvalues(nameZh,c("¤¤±[¤G¸ô¤@","±¶¹B»ñ¤s¦è¯¸(«C¦~¸ô¤@¬q)","«Ø°ê¸ô¤f(«C¦~¸ô¤G¬q)"),c("¤¤±[¤G¸ô","±¶¹B»ñ¤s¦è¯¸","«Ø°ê¸ô¤f")))%>%
+  mutate(nameZh=mapvalues(nameZh,c("ä¸­å´™äºŒè·¯ä¸€","æ·é‹é³³å±±è¥¿ç«™(é’å¹´è·¯ä¸€æ®µ)","å»ºåœ‹è·¯å£(é’å¹´è·¯äºŒæ®µ)"),c("ä¸­å´™äºŒè·¯","æ·é‹é³³å±±è¥¿ç«™","å»ºåœ‹è·¯å£")))%>%
   select(nameZh,seqNo,GoBack)
 
-#±q­ì¥»ªºO12¸ê®Æ¿ï¨ú³¡¤ÀÅÜ¼Æ¥X¨Ó¡A¬°Choose1
-Choose1=O12%>%select(¥q¾÷¦WºÙ,¥q¾÷½s¸¹,¤W¨®¥æ©ö¤é´Á,¤W¨®¥æ©ö®É¶¡,¤W¨®©Û©I¯¸¦WºÙ,¤U¨®¥æ©ö®É¶¡,¤U¨®©Û©I¯¸¦WºÙ)
-#Choose1¦b¸g¹L¤@¨Ç­×¥¿:¥hªÅ®æ¡B¼W¥[¥N½X
+#å¾åŸæœ¬çš„O12è³‡æ–™é¸å–éƒ¨åˆ†è®Šæ•¸å‡ºä¾†ï¼Œç‚ºChoose1
+Choose1=O12%>%select(å¸æ©Ÿåç¨±,å¸æ©Ÿç·¨è™Ÿ,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ,ä¸Šè»Šäº¤æ˜“æ™‚é–“,ä¸Šè»Šæ‹›å‘¼ç«™åç¨±,ä¸‹è»Šäº¤æ˜“æ™‚é–“,ä¸‹è»Šæ‹›å‘¼ç«™åç¨±)
+#Choose1åœ¨ç¶“éä¸€äº›ä¿®æ­£:å»ç©ºæ ¼ã€å¢åŠ ä»£ç¢¼
 Choose1=na.omit(Choose1)%>%
-  mutate(¤W¨®¥N½X=gsub("1","",¤W¨®©Û©I¯¸¦WºÙ))%>%mutate(¤W¨®¥N½X=gsub("2","",¤W¨®¥N½X))%>%
-  mutate(¤U¨®¥N½X=gsub("1","",¤U¨®©Û©I¯¸¦WºÙ))%>%mutate(¤U¨®¥N½X=gsub("2","",¤U¨®¥N½X))
+  mutate(ä¸Šè»Šä»£ç¢¼=gsub("1","",ä¸Šè»Šæ‹›å‘¼ç«™åç¨±))%>%mutate(ä¸Šè»Šä»£ç¢¼=gsub("2","",ä¸Šè»Šä»£ç¢¼))%>%
+  mutate(ä¸‹è»Šä»£ç¢¼=gsub("1","",ä¸‹è»Šæ‹›å‘¼ç«™åç¨±))%>%mutate(ä¸‹è»Šä»£ç¢¼=gsub("2","",ä¸‹è»Šä»£ç¢¼))
 
-#¦]BusStop¥]§t¦U¯¸¦b¥h¦^µ{ªº±¡§Î¡A¦b¦Ò¼{³¡¤À¯¸§O¦]¬°©¿²¤³y¦¨ªº®É¶¡®t²§¤£¤jªº±¡ªp¤U
-#¿ï¾Ü¯¸µP¥]§t³Ì¦hªº¸ôµ{¬°StopName(¦b¦¹¬°GoBack=1)¡A¨Ã¥Ñ©ó«áÄòªºjaccard¤èªk¡A¦Ó±NStopNameÂà¬°¦V¶q«¬ºA
+#å› BusStopåŒ…å«å„ç«™åœ¨å»å›ç¨‹çš„æƒ…å½¢ï¼Œåœ¨è€ƒæ…®éƒ¨åˆ†ç«™åˆ¥å› ç‚ºå¿½ç•¥é€ æˆçš„æ™‚é–“å·®ç•°ä¸å¤§çš„æƒ…æ³ä¸‹
+#é¸æ“‡ç«™ç‰ŒåŒ…å«æœ€å¤šçš„è·¯ç¨‹ç‚ºStopName(åœ¨æ­¤ç‚ºGoBack=1)ï¼Œä¸¦ç”±æ–¼å¾ŒçºŒçš„jaccardæ–¹æ³•ï¼Œè€Œå°‡StopNameè½‰ç‚ºå‘é‡å‹æ…‹
 StopName=BusStop%>%filter(GoBack==1)%>%select(nameZh)%>%as.matrix()%>%as.vector()
 
-#³o¼Ë´N¥i¥H±NChoose1ªº¯¸¦W¡A§Q¥Îjaccard¤èªkÂà´«¬°ª¦ÂÎ¸ê®Æªº¯¸¦W
+#é€™æ¨£å°±å¯ä»¥å°‡Choose1çš„ç«™åï¼Œåˆ©ç”¨jaccardæ–¹æ³•è½‰æ›ç‚ºçˆ¬èŸ²è³‡æ–™çš„ç«™å
 for(i in 1:dim(Choose1)[1]){
-    Choose1$¤W¨®¥N½X[i]=StopName[which.min(stringdist(Choose1$¤W¨®¥N½X[i],StopName,method="jaccard"))]
-    Choose1$¤U¨®¥N½X[i]=StopName[which.min(stringdist(Choose1$¤U¨®¥N½X[i],StopName,method="jaccard"))]
+    Choose1$ä¸Šè»Šä»£ç¢¼[i]=StopName[which.min(stringdist(Choose1$ä¸Šè»Šä»£ç¢¼[i],StopName,method="jaccard"))]
+    Choose1$ä¸‹è»Šä»£ç¢¼[i]=StopName[which.min(stringdist(Choose1$ä¸‹è»Šä»£ç¢¼[i],StopName,method="jaccard"))]
   }
 
-#±Nª¦ÂÎ¸ê®Æªº¯¸¦WÂà´«¬°¥N½X¡A¥H¤è«K¤ÀªR
+#å°‡çˆ¬èŸ²è³‡æ–™çš„ç«™åè½‰æ›ç‚ºä»£ç¢¼ï¼Œä»¥æ–¹ä¾¿åˆ†æ
 Choose1=Choose1%>%
-  mutate(¤W¨®¥N½X=mapvalues(¤W¨®¥N½X,StopName,c(1:length(StopName))))%>%
-  mutate(¤U¨®¥N½X=mapvalues(¤U¨®¥N½X,StopName,c(1:length(StopName))))
-Choose1$¤W¨®¥N½X=Choose1$¤W¨®¥N½X%>%as.character%>%as.numeric
-Choose1$¤U¨®¥N½X=Choose1$¤U¨®¥N½X%>%as.character%>%as.numeric
-Choose1$¥q¾÷½s¸¹=Choose1$¥q¾÷½s¸¹%>%as.character%>%as.numeric
-#±NChoose1¶i¦æÅÜ¼Æ¦WºÙªº­×¥¿»P±Æ§Ç¡A¥[¤J¤W¤U¨®®É¶¡(®É¶¡ªí¥Ü)
-#«O¯d­ì¥»ªº¤é´Á»P®É¶¡ªº¼Æ¦rªí¥Ü¥H¤è«K¤£¦Pªº¤ÀªR
+  mutate(ä¸Šè»Šä»£ç¢¼=mapvalues(ä¸Šè»Šä»£ç¢¼,StopName,c(1:length(StopName))))%>%
+  mutate(ä¸‹è»Šä»£ç¢¼=mapvalues(ä¸‹è»Šä»£ç¢¼,StopName,c(1:length(StopName))))
+Choose1$ä¸Šè»Šä»£ç¢¼=Choose1$ä¸Šè»Šä»£ç¢¼%>%as.character%>%as.numeric
+Choose1$ä¸‹è»Šä»£ç¢¼=Choose1$ä¸‹è»Šä»£ç¢¼%>%as.character%>%as.numeric
+Choose1$å¸æ©Ÿç·¨è™Ÿ=Choose1$å¸æ©Ÿç·¨è™Ÿ%>%as.character%>%as.numeric
+#å°‡Choose1é€²è¡Œè®Šæ•¸åç¨±çš„ä¿®æ­£èˆ‡æ’åºï¼ŒåŠ å…¥ä¸Šä¸‹è»Šæ™‚é–“(æ™‚é–“è¡¨ç¤º)
+#ä¿ç•™åŸæœ¬çš„æ—¥æœŸèˆ‡æ™‚é–“çš„æ•¸å­—è¡¨ç¤ºä»¥æ–¹ä¾¿ä¸åŒçš„åˆ†æ
 Analysis1=Choose1%>%
-  mutate(¤W¨®¥æ©ö®É¶¡=¤W¨®¥æ©ö®É¶¡)%>%
-  mutate(¤W¨®®É¶¡=as.POSIXct(strptime(paste0(¤W¨®¥æ©ö¤é´Á,¤W¨®¥æ©ö®É¶¡),format="%Y%m%d%H%M%S"), tz="Asia/Taipei"))%>%
-  mutate(¤U¨®®É¶¡=as.POSIXct(strptime(paste0(¤W¨®¥æ©ö¤é´Á,¤U¨®¥æ©ö®É¶¡),format="%Y%m%d%H%M%S"), tz="Asia/Taipei"))%>%
-  select(¥q¾÷¦WºÙ,¥q¾÷½s¸¹,¤W¨®¥æ©ö¤é´Á,¤W¨®¥æ©ö®É¶¡,¤W¨®©Û©I¯¸¦WºÙ,¤W¨®¥N½X,¤W¨®®É¶¡,¤U¨®¥æ©ö®É¶¡,¤U¨®©Û©I¯¸¦WºÙ,¤U¨®¥N½X,¤U¨®®É¶¡)
+  mutate(ä¸Šè»Šäº¤æ˜“æ™‚é–“=ä¸Šè»Šäº¤æ˜“æ™‚é–“)%>%
+  mutate(ä¸Šè»Šæ™‚é–“=as.POSIXct(strptime(paste0(ä¸Šè»Šäº¤æ˜“æ—¥æœŸ,ä¸Šè»Šäº¤æ˜“æ™‚é–“),format="%Y%m%d%H%M%S"), tz="Asia/Taipei"))%>%
+  mutate(ä¸‹è»Šæ™‚é–“=as.POSIXct(strptime(paste0(ä¸Šè»Šäº¤æ˜“æ—¥æœŸ,ä¸‹è»Šäº¤æ˜“æ™‚é–“),format="%Y%m%d%H%M%S"), tz="Asia/Taipei"))%>%
+  select(å¸æ©Ÿåç¨±,å¸æ©Ÿç·¨è™Ÿ,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ,ä¸Šè»Šäº¤æ˜“æ™‚é–“,ä¸Šè»Šæ‹›å‘¼ç«™åç¨±,ä¸Šè»Šä»£ç¢¼,ä¸Šè»Šæ™‚é–“,ä¸‹è»Šäº¤æ˜“æ™‚é–“,ä¸‹è»Šæ‹›å‘¼ç«™åç¨±,ä¸‹è»Šä»£ç¢¼,ä¸‹è»Šæ™‚é–“)
 
 ######################################################
 
-#1 ³æ©P¤º¨C¯¸¤W¤U¨®¤H¼Æªø±ø¹Ï
-par(oma=c(0,0,0,0))#½Õ¾ã¥~Ãä¬É¥Î¡A¹w³]­È¬Ò¬°0
+#1 å–®å‘¨å…§æ¯ç«™ä¸Šä¸‹è»Šäººæ•¸é•·æ¢åœ–
+par(oma=c(0,0,0,0))#èª¿æ•´å¤–é‚Šç•Œç”¨ï¼Œé è¨­å€¼çš†ç‚º0
 par(mar=c(9,5,4,2))
-xnst=2;xnd=3;xnh=40;Legend="topright"#x¶b¼ĞÅÒªº°_©l¡B¶¡¶Z¡B»Pªø±øªº¶ZÂ÷
+xnst=2;xnd=3;xnh=40;Legend="topright"#xè»¸æ¨™ç±¤çš„èµ·å§‹ã€é–“è·ã€èˆ‡é•·æ¢çš„è·é›¢
 c1="palegreen3"; c2="rosybrown1"
-GetOnOffTable=rbind(table(Analysis1$¤W¨®¥N½X),table(Analysis1$¤U¨®¥N½X))
-barplot(GetOnOffTable,ylab="­¼«È¤H¼Æ",main=paste0("¾ï12","³æ©P¤º¨C¯¸¤W¤U¨®¤H¼Æ"),
+GetOnOffTable=rbind(table(Analysis1$ä¸Šè»Šä»£ç¢¼),table(Analysis1$ä¸‹è»Šä»£ç¢¼))
+barplot(GetOnOffTable,ylab="ä¹˜å®¢äººæ•¸",main=paste0("æ©˜12","å–®å‘¨å…§æ¯ç«™ä¸Šä¸‹è»Šäººæ•¸"),
         col=c(c1,c2),horiz=F,beside=T,las=1,xaxt="n")
-Nh=gsub("","\n",StopName)#¬°¤F­nª½¦Vªí¥Ü¯¸¦W¡A»İ¦w´¡\n
-Label=substr(Nh,rep(2,length(Nh)),(nchar(Nh)-1))#¦ı«e«áªº\n¨Ã¤£»İ­n¡A©Ò¥H­n¥h°£
-Label=gsub("\\(", "|", gsub(")","",Label))#¦pªG¦³¬A¸¹¡A«h¤À§O§â¥ª¥k¬A¸¹§ï¬°"|"»P""
+Nh=gsub("","\n",StopName)#ç‚ºäº†è¦ç›´å‘è¡¨ç¤ºç«™åï¼Œéœ€å®‰æ’\n
+Label=substr(Nh,rep(2,length(Nh)),(nchar(Nh)-1))#ä½†å‰å¾Œçš„\nä¸¦ä¸éœ€è¦ï¼Œæ‰€ä»¥è¦å»é™¤
+Label=gsub("\\(", "|", gsub(")","",Label))#å¦‚æœæœ‰æ‹¬è™Ÿï¼Œå‰‡åˆ†åˆ¥æŠŠå·¦å³æ‹¬è™Ÿæ”¹ç‚º"|"èˆ‡""
 text(seq(xnst,xnd*length(colnames(GetOnOffTable)),by=xnd), par("usr")[3]-xnh, 
      labels=Label,las=1,pos=1,xpd=T) 
-legend(Legend,legend=c("¤W¨®","¤U¨®"),fill=c(c1,c2))
+legend(Legend,legend=c("ä¸Šè»Š","ä¸‹è»Š"),fill=c(c1,c2))
 
 #2 Page Rank
-GetOnOffNum<-Analysis1%>%select(¤W¨®¥N½X,¤U¨®¥N½X)%>%na.omit()#row¤Wcol¤U
+GetOnOffNum<-Analysis1%>%select(ä¸Šè»Šä»£ç¢¼,ä¸‹è»Šä»£ç¢¼)%>%na.omit()#rowä¸Šcolä¸‹
 Transition=matrix(0,length(StopName),length(StopName))
 apply(GetOnOffNum,1,function(x) {Transition[x[1],x[2]]<<-Transition[x[1],x[2]]+1;})
-Transition_new=t(apply(Transition,1,function(x) x/sum(x)))#Åırowsum¬°1
+Transition_new=t(apply(Transition,1,function(x) x/sum(x)))#è®“rowsumç‚º1
 calcEigenMatrix<-function(G){x<-Re(eigen(G)$vectors[,1]);  x/sum(x)}
 calcEigenMatrix(t(Transition_new))
-#¥Ñ¯S¼x­È±o¤j¤p¥i¥H¬İ¥X¦U¯¸ªº­«­n«×
+#ç”±ç‰¹å¾µå€¼å¤§å°å¯ä»¥çœ‹å‡ºå„ç«™çš„é‡è¦åº¦
 data.table(EV=calcEigenMatrix(t(Transition_new)),StationNum=c(1:length(StopName)),Station=StopName)%>%arrange(desc(EV))%>%View()
 
-#3 ¦U¯¸¤W¤U¨®ÃöÁp©Ê¤§¼ö¹Ï
+#3 å„ç«™ä¸Šä¸‹è»Šé—œè¯æ€§ä¹‹ç†±åœ–
 my_palette=colorRampPalette(c("lavenderblush1", "red2"))(n=100)
 rownames(Transition)=colnames(Transition)=StopName
 heatmap.2(Transition,dendrogram='none', Rowv=F, Colv=F,trace='none',col=my_palette,
-          tracecol="black",margins=c(8,8),main="¾ï12¦U¯¸¬ÛÃö­«­nµ{«×",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="æ©˜12å„ç«™ç›¸é—œé‡è¦ç¨‹åº¦",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 
 #####
-#¤è«K¤À¿ë¥q¾÷¡A©Ò¥H§â¥q¾÷½s¸¹§ï¦¨±q1¶}ÀYªº¼Æ¦rªí¥Ü
+#æ–¹ä¾¿åˆ†è¾¨å¸æ©Ÿï¼Œæ‰€ä»¥æŠŠå¸æ©Ÿç·¨è™Ÿæ”¹æˆå¾1é–‹é ­çš„æ•¸å­—è¡¨ç¤º
 Analysis1=Analysis1%>%
-  mutate(¥q¾÷½s¸¹=mapvalues(¥q¾÷½s¸¹,names(sort(table(Analysis1$¥q¾÷½s¸¹),decreasing=T)),c(1:dim(sort(table(Analysis1$¥q¾÷½s¸¹),decreasing=T)))))
+  mutate(å¸æ©Ÿç·¨è™Ÿ=mapvalues(å¸æ©Ÿç·¨è™Ÿ,names(sort(table(Analysis1$å¸æ©Ÿç·¨è™Ÿ),decreasing=T)),c(1:dim(sort(table(Analysis1$å¸æ©Ÿç·¨è™Ÿ),decreasing=T)))))
 
-#ÀËµø¤@¤U¦³¦h¤Ö­¼«È¦P¯¸¤W¤U¨®¡Aµ²ªG¥D­n³£¥X²{¦b­º§À¯¸ªşªñ¡A¦]¦¹¥i¥H±Æ°£
-Analysis1%>%filter(¤W¨®¥N½X==¤U¨®¥N½X)%>%View()
-#¦Ó±Æ°£¦P¯¸¤W¤U¨®¡A´N¥u¨Ì·Ó¤W¤U¨®¥N½Xªº¤ñ¸ûÃö«Y¤À¦¨¥h¦^µ{
-Go1=Analysis1%>%filter(¤W¨®¥N½X<¤U¨®¥N½X)
-Go1=Go1[as.numeric(as.character(Go1$¤W¨®¥æ©ö®É¶¡))>50000,]
-Back1=Analysis1%>%filter(¤W¨®¥N½X>¤U¨®¥N½X)
-Back1=Back1[as.numeric(as.character(Back1$¤W¨®¥æ©ö®É¶¡))>50000,]
+#æª¢è¦–ä¸€ä¸‹æœ‰å¤šå°‘ä¹˜å®¢åŒç«™ä¸Šä¸‹è»Šï¼Œçµæœä¸»è¦éƒ½å‡ºç¾åœ¨é¦–å°¾ç«™é™„è¿‘ï¼Œå› æ­¤å¯ä»¥æ’é™¤
+Analysis1%>%filter(ä¸Šè»Šä»£ç¢¼==ä¸‹è»Šä»£ç¢¼)%>%View()
+#è€Œæ’é™¤åŒç«™ä¸Šä¸‹è»Šï¼Œå°±åªä¾ç…§ä¸Šä¸‹è»Šä»£ç¢¼çš„æ¯”è¼ƒé—œä¿‚åˆ†æˆå»å›ç¨‹
+Go1=Analysis1%>%filter(ä¸Šè»Šä»£ç¢¼<ä¸‹è»Šä»£ç¢¼)
+Go1=Go1[as.numeric(as.character(Go1$ä¸Šè»Šäº¤æ˜“æ™‚é–“))>50000,]
+Back1=Analysis1%>%filter(ä¸Šè»Šä»£ç¢¼>ä¸‹è»Šä»£ç¢¼)
+Back1=Back1[as.numeric(as.character(Back1$ä¸Šè»Šäº¤æ˜“æ™‚é–“))>50000,]
 
-##GoTimeIdeal»PBackTimeIdeal¬°¥h¦^µ{ªí©w®É¶¡ªí
+##GoTimeIdealèˆ‡BackTimeIdealç‚ºå»å›ç¨‹è¡¨å®šæ™‚é–“è¡¨
 {
-  BackTimeIdeal<-read.csv("CSV/D·F½u¤½¨®/O12¦U¨ì¯¸®É¶¡_©¹¤¤±[.csv",header=T)
-  GoTimeIdeal<-read.csv("CSV/D·F½u¤½¨®/O12¦U¨ì¯¸®É¶¡_©¹ªø©°.csv",header=T)
+  BackTimeIdeal<-read.csv("CSV/Då¹¹ç·šå…¬è»Š/O12å„åˆ°ç«™æ™‚é–“_å¾€ä¸­å´™.csv",header=T)
+  GoTimeIdeal<-read.csv("CSV/Då¹¹ç·šå…¬è»Š/O12å„åˆ°ç«™æ™‚é–“_å¾€é•·åºš.csv",header=T)
 }
 
-#³æ¤@¥q¾÷³æ¤@¤é´Á³æ½ë¤W¤U¨®Ãö«Y¹Ï
-#GB=Go1©ÎBack1  Driver=1~14  Date=20170212~20170218
+#å–®ä¸€å¸æ©Ÿå–®ä¸€æ—¥æœŸå–®è¶Ÿä¸Šä¸‹è»Šé—œä¿‚åœ–
+#GB=Go1æˆ–Back1  Driver=1~14  Date=20170212~20170218
 GBPD<-function(GB,Driver,Date){
-  DriverData=filter(GB, ¥q¾÷½s¸¹==Driver, grepl(Date,¤W¨®¥æ©ö¤é´Á))%>%arrange(¤W¨®¥æ©ö®É¶¡)
-  Person=names(sort(table(DriverData%>%select(¥q¾÷¦WºÙ)),decreasing=T))[1]
+  DriverData=filter(GB, å¸æ©Ÿç·¨è™Ÿ==Driver, grepl(Date,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ))%>%arrange(ä¸Šè»Šäº¤æ˜“æ™‚é–“)
+  Person=names(sort(table(DriverData%>%select(å¸æ©Ÿåç¨±)),decreasing=T))[1]
   X0=c(1:dim(DriverData)[1])
-  Y0=DriverData$¤W¨®®É¶¡
-  Y1=DriverData$¤U¨®®É¶¡
+  Y0=DriverData$ä¸Šè»Šæ™‚é–“
+  Y1=DriverData$ä¸‹è»Šæ™‚é–“
   plot(range(X0), range(Y0,Y1), type="n", axes=TRUE, ann=FALSE,las=1)
   if(dim(GB)[1]==dim(Go1)[1])     {segments(x0=X0, y0=Y0, y1=Y1, col='red', lwd=2)}
   if(dim(GB)[1]==dim(Back1)[1])     {segments(x0=X0, y0=Y0, y1=Y1, col='blue', lwd=2)}
   #points(x=X0, y=Y1, pch=16, cex=1, col="forestgreen")
   #points(x=X0, y=Y0, pch=16, cex=1, col="black")
-  if(dim(GB)[1]==dim(Go1)[1])     {title(main=paste0(Person,"¥q¾÷","©ó",Date,"ªº¥hµ{¤W¤U¨®®É¶¡Ãö«Y¹Ï"))}
-  if(dim(GB)[1]==dim(Back1)[1])   {title(main=paste0(Person,"¥q¾÷","©ó",Date,"ªº¦^µ{¤W¤U¨®®É¶¡Ãö«Y¹Ï"))}
-  legend("bottomright",legend=c("¤W¨®", "¤U¨®"),col=c("black","forestgreen"),pch=16,cex=1.5)
+  if(dim(GB)[1]==dim(Go1)[1])     {title(main=paste0(Person,"å¸æ©Ÿ","æ–¼",Date,"çš„å»ç¨‹ä¸Šä¸‹è»Šæ™‚é–“é—œä¿‚åœ–"))}
+  if(dim(GB)[1]==dim(Back1)[1])   {title(main=paste0(Person,"å¸æ©Ÿ","æ–¼",Date,"çš„å›ç¨‹ä¸Šä¸‹è»Šæ™‚é–“é—œä¿‚åœ–"))}
+  legend("bottomright",legend=c("ä¸Šè»Š", "ä¸‹è»Š"),col=c("black","forestgreen"),pch=16,cex=1.5)
 }
 
-#³æ¤@¥q¾÷³æ¤@¤é´Á³æ½ë¤W¤U¨®Ãö«Y¹Ï
+#å–®ä¸€å¸æ©Ÿå–®ä¸€æ—¥æœŸå–®è¶Ÿä¸Šä¸‹è»Šé—œä¿‚åœ–
 PD<-function(Go,Back,Driver,Date){
-  GoDriverData=filter(Go, ¥q¾÷½s¸¹==Driver, grepl(Date,¤W¨®¥æ©ö¤é´Á))
-  BackDriverData=filter(Back, ¥q¾÷½s¸¹==Driver, grepl(Date,¤W¨®¥æ©ö¤é´Á))
-  Person=names(sort(table(GoDriverData%>%select(¥q¾÷¦WºÙ)),decreasing=T))[1]
-  Y01=GoDriverData$¤W¨®®É¶¡
-  Y11=GoDriverData$¤U¨®®É¶¡
-  Y02=BackDriverData$¤W¨®®É¶¡
-  Y12=BackDriverData$¤U¨®®É¶¡
-  y=data.table(¤W¨®=c(Y01,Y02),¤U¨®=c(Y11,Y12),¥hµ{=c(rep(1,length(Y01)),rep(0,length(Y02))))%>%arrange(¤W¨®)
+  GoDriverData=filter(Go, å¸æ©Ÿç·¨è™Ÿ==Driver, grepl(Date,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ))
+  BackDriverData=filter(Back, å¸æ©Ÿç·¨è™Ÿ==Driver, grepl(Date,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ))
+  Person=names(sort(table(GoDriverData%>%select(å¸æ©Ÿåç¨±)),decreasing=T))[1]
+  Y01=GoDriverData$ä¸Šè»Šæ™‚é–“
+  Y11=GoDriverData$ä¸‹è»Šæ™‚é–“
+  Y02=BackDriverData$ä¸Šè»Šæ™‚é–“
+  Y12=BackDriverData$ä¸‹è»Šæ™‚é–“
+  y=data.table(ä¸Šè»Š=c(Y01,Y02),ä¸‹è»Š=c(Y11,Y12),å»ç¨‹=c(rep(1,length(Y01)),rep(0,length(Y02))))%>%arrange(ä¸Šè»Š)
   
-  plot(range(1,dim(y)[1]), range(y$¤W¨®,y$¤U¨®), type="n", axes=TRUE, ann=FALSE,las=1)
-  segments(x0=which(y$¥hµ{==1), y0=y$¤W¨®[which(y$¥hµ{==1)], y1=y$¤U¨®[which(y$¥hµ{==1)], col='red', lwd=2)
-  segments(x0=which(y$¥hµ{==0), y0=y$¤W¨®[which(y$¥hµ{==0)], y1=y$¤U¨®[which(y$¥hµ{==0)], col='blue', lwd=2)
+  plot(range(1,dim(y)[1]), range(y$ä¸Šè»Š,y$ä¸‹è»Š), type="n", axes=TRUE, ann=FALSE,las=1)
+  segments(x0=which(y$å»ç¨‹==1), y0=y$ä¸Šè»Š[which(y$å»ç¨‹==1)], y1=y$ä¸‹è»Š[which(y$å»ç¨‹==1)], col='red', lwd=2)
+  segments(x0=which(y$å»ç¨‹==0), y0=y$ä¸Šè»Š[which(y$å»ç¨‹==0)], y1=y$ä¸‹è»Š[which(y$å»ç¨‹==0)], col='blue', lwd=2)
   
-  title(main=paste0(Person,"¥q¾÷","©ó",Date,"ªº¤W¤U¨®®É¶¡Ãö«Y¹Ï(³æ½ë¤W¤U¨®)"))
-  legend("bottomright",legend=c("¥hµ{", "¦^µ{"),col=c("red", "blue"), lwd=2, lty=1, cex=1.5)
+  title(main=paste0(Person,"å¸æ©Ÿ","æ–¼",Date,"çš„ä¸Šä¸‹è»Šæ™‚é–“é—œä¿‚åœ–(å–®è¶Ÿä¸Šä¸‹è»Š)"))
+  legend("bottomright",legend=c("å»ç¨‹", "å›ç¨‹"),col=c("red", "blue"), lwd=2, lty=1, cex=1.5)
 }
 PD(Go1,Back1,1,20170212)
-#±N¤W­zªº©µ¿ğ®É¶¡¸ê®Æ«Ø¦¨function ©¹ªø©°ªº©µ¿ğ¸ê®Æ
+#å°‡ä¸Šè¿°çš„å»¶é²æ™‚é–“è³‡æ–™å»ºæˆfunction å¾€é•·åºšçš„å»¶é²è³‡æ–™
 GoTimeDelayData<-function(Driver,Date){
-  Test1=Go1%>%filter(¥q¾÷½s¸¹==Driver,¤W¨®¥æ©ö¤é´Á==Date)%>%
-    select(¤W¨®¥æ©ö®É¶¡,¤W¨®©Û©I¯¸¦WºÙ,¤W¨®¥N½X,¤W¨®®É¶¡,
-           ¤U¨®¥æ©ö®É¶¡,¤U¨®©Û©I¯¸¦WºÙ,¤U¨®¥N½X,¤U¨®®É¶¡)%>%arrange(¤W¨®¥æ©ö®É¶¡)
-  Test1=Test1%>%mutate(½ë¼Æ=rep(1,nrow(Test1)),¨®¦¸¶¶§Ç=rep(1,nrow(Test1)))
+  Test1=Go1%>%filter(å¸æ©Ÿç·¨è™Ÿ==Driver,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ==Date)%>%
+    select(ä¸Šè»Šäº¤æ˜“æ™‚é–“,ä¸Šè»Šæ‹›å‘¼ç«™åç¨±,ä¸Šè»Šä»£ç¢¼,ä¸Šè»Šæ™‚é–“,
+           ä¸‹è»Šäº¤æ˜“æ™‚é–“,ä¸‹è»Šæ‹›å‘¼ç«™åç¨±,ä¸‹è»Šä»£ç¢¼,ä¸‹è»Šæ™‚é–“)%>%arrange(ä¸Šè»Šäº¤æ˜“æ™‚é–“)
+  Test1=Test1%>%mutate(è¶Ÿæ•¸=rep(1,nrow(Test1)),è»Šæ¬¡é †åº=rep(1,nrow(Test1)))
   for(i in 2:nrow(Test1))
   {
     AddTime1=strptime(45,format="%M")-strptime(00,format="%M")
-    CompareTime=Test1$¤W¨®®É¶¡[i]
-    ObTime=Test1$¤W¨®®É¶¡[i-1]
+    CompareTime=Test1$ä¸Šè»Šæ™‚é–“[i]
+    ObTime=Test1$ä¸Šè»Šæ™‚é–“[i-1]
     if(CompareTime-ObTime>AddTime1)
-    {Test1$½ë¼Æ[-c(1:(i-1))]<-1+rep(Test1$½ë¼Æ[i-1],(nrow(Test1)-i+1))}
+    {Test1$è¶Ÿæ•¸[-c(1:(i-1))]<-1+rep(Test1$è¶Ÿæ•¸[i-1],(nrow(Test1)-i+1))}
   }
-  FirstStop=aggregate(¤W¨®¥N½X~½ë¼Æ,data=Test1, min);   Early=NA
-  for(i in 1:nrow(FirstStop)) {Early=c(Early,which(Test1$½ë¼Æ==FirstStop$½ë¼Æ[i]&Test1$¤W¨®¥N½X==FirstStop$¤W¨®¥N½X[i]))}
-  FSP=Test1[Early[-1],] #FSPÅã¥Ü¨C¤@½ë³Ì¦­¤W¨®¬ö¿ı¤§¨®¯¸ªº­¼«È¸ê®Æ
+  FirstStop=aggregate(ä¸Šè»Šä»£ç¢¼~è¶Ÿæ•¸,data=Test1, min);   Early=NA
+  for(i in 1:nrow(FirstStop)) {Early=c(Early,which(Test1$è¶Ÿæ•¸==FirstStop$è¶Ÿæ•¸[i]&Test1$ä¸Šè»Šä»£ç¢¼==FirstStop$ä¸Šè»Šä»£ç¢¼[i]))}
+  FSP=Test1[Early[-1],] #FSPé¡¯ç¤ºæ¯ä¸€è¶Ÿæœ€æ—©ä¸Šè»Šç´€éŒ„ä¹‹è»Šç«™çš„ä¹˜å®¢è³‡æ–™
   Order=array(0) 
-  for(i in 1:(max(FSP$½ë¼Æ)))
+  for(i in 1:(max(FSP$è¶Ÿæ•¸)))
   {
-    Num=min(FSP%>%select(¤W¨®¥N½X,½ë¼Æ)%>%filter(½ë¼Æ==i)%>%select(¤W¨®¥N½X))#¨C½ë³Ì¦­°Ñ¦Ò®É¶¡ªº¯¸½s¸¹
-    Arrive1=(FSP%>%filter(½ë¼Æ==i)%>%select(¤W¨®®É¶¡)%>%filter(¤W¨®®É¶¡==min(¤W¨®®É¶¡)))[1,1]#¨C½ë³Ì¦­¯¸³Ì¦­¤W¨®®É¶¡
-    Arrive2=(FSP%>%filter(½ë¼Æ==i)%>%select(¤W¨®®É¶¡)%>%filter(¤W¨®®É¶¡==max(¤W¨®®É¶¡)))[1,1]#¨C½ë³Ì¦­¯¸³Ì±ß¤W¨®®É¶¡
-    Arrive=(Arrive1+(Arrive2-Arrive1)/2)#¤ñ¹ï®É¶¡:¬°³Ì¦­»P³Ì±ßªº¥­§¡­È
+    Num=min(FSP%>%select(ä¸Šè»Šä»£ç¢¼,è¶Ÿæ•¸)%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šä»£ç¢¼))#æ¯è¶Ÿæœ€æ—©åƒè€ƒæ™‚é–“çš„ç«™ç·¨è™Ÿ
+    Arrive1=(FSP%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šæ™‚é–“)%>%filter(ä¸Šè»Šæ™‚é–“==min(ä¸Šè»Šæ™‚é–“)))[1,1]#æ¯è¶Ÿæœ€æ—©ç«™æœ€æ—©ä¸Šè»Šæ™‚é–“
+    Arrive2=(FSP%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šæ™‚é–“)%>%filter(ä¸Šè»Šæ™‚é–“==max(ä¸Šè»Šæ™‚é–“)))[1,1]#æ¯è¶Ÿæœ€æ—©ç«™æœ€æ™šä¸Šè»Šæ™‚é–“
+    Arrive=(Arrive1+(Arrive2-Arrive1)/2)#æ¯”å°æ™‚é–“:ç‚ºæœ€æ—©èˆ‡æœ€æ™šçš„å¹³å‡å€¼
     for(j in 1:nrow(GoTimeIdeal))
     {
-      RealT=strptime(paste0(Date,GoTimeIdeal[j,Num]),format="%Y%m%d%H:%M")#°Ñ¦Ò®É¶¡
-      if(j==1) {delta1=strptime(1,format="%H")-strptime(0,format="%H")} #°Ñ¦Ò®É¶¡»P«e¤@¯Z¤§¶¡®t¶Zªº¤@¥b
+      RealT=strptime(paste0(Date,GoTimeIdeal[j,Num]),format="%Y%m%d%H:%M")#åƒè€ƒæ™‚é–“
+      if(j==1) {delta1=strptime(1,format="%H")-strptime(0,format="%H")} #åƒè€ƒæ™‚é–“èˆ‡å‰ä¸€ç­ä¹‹é–“å·®è·çš„ä¸€åŠ
       else     {delta1=(RealT-strptime(paste0(Date,GoTimeIdeal[j-1,Num]),format="%Y%m%d%H:%M"))/2}
       
-      if(j==nrow(GoTimeIdeal)) {delta2=strptime(1,format="%H")-strptime(0,format="%H")}#°Ñ¦Ò®É¶¡»P«á¤@¯Z¤§¶¡®t¶Zªº¤@¥b
+      if(j==nrow(GoTimeIdeal)) {delta2=strptime(1,format="%H")-strptime(0,format="%H")}#åƒè€ƒæ™‚é–“èˆ‡å¾Œä¸€ç­ä¹‹é–“å·®è·çš„ä¸€åŠ
       else         {delta2=(strptime(paste0(Date,GoTimeIdeal[j+1,Num]),format="%Y%m%d%H:%M")-RealT)/2}
       if(delta2<0) {delta2=((strptime(paste0(Date,GoTimeIdeal[j+1,Num]),format="%Y%m%d%H:%M")-(strptime(24,format="%H")-strptime(0,format="%H"))*(-1))-RealT)/2}
-      Low=RealT-delta1;    High=RealT+delta2 #¨M©w°Ñ¦Ò®É¶¡ªº°Ï¶¡
-      if((Arrive>Low)&(Arrive<High)){Order[i]=j; break}#¨®¤l¦³¥i¯à¦­¨ì ¦ı¬O¦]¬°¯¸§Ç¸û¦­ ®t§O¤£¤j ©Ò¥H­q¤@­Ó¤p°Ï¶¡§Y¥i
+      Low=RealT-delta1;    High=RealT+delta2 #æ±ºå®šåƒè€ƒæ™‚é–“çš„å€é–“
+      if((Arrive>Low)&(Arrive<High)){Order[i]=j; break}#è»Šå­æœ‰å¯èƒ½æ—©åˆ° ä½†æ˜¯å› ç‚ºç«™åºè¼ƒæ—© å·®åˆ¥ä¸å¤§ æ‰€ä»¥è¨‚ä¸€å€‹å°å€é–“å³å¯
     }
-  }#OrderÅã¥Ü¨C¤@½ë¹ïÀ³ªí©w®É¶¡ªº¨®¦¸¶¶§Ç
-  Test1<-Test1%>%mutate(¨®¦¸¶¶§Ç=mapvalues(Test1$½ë¼Æ, c(min(Test1$½ë¼Æ):max(Test1$½ë¼Æ)), Order))%>%
-    mutate(ªí©w¤W¨®®É¶¡=GoTimeIdeal[cbind(¨®¦¸¶¶§Ç,¤W¨®¥N½X)])%>%
-    mutate(ªí©w¤U¨®®É¶¡=GoTimeIdeal[cbind(¨®¦¸¶¶§Ç,¤U¨®¥N½X)])%>%
-    mutate(¤W¨®©µ¿ğ=ªí©w¤W¨®®É¶¡,¤U¨®©µ¿ğ=ªí©w¤U¨®®É¶¡)
-  Test1$ªí©w¤W¨®®É¶¡<-as.POSIXct(strptime(paste0(Date,Test1$ªí©w¤W¨®®É¶¡), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
-  Test1$ªí©w¤U¨®®É¶¡<-as.POSIXct(strptime(paste0(Date,Test1$ªí©w¤U¨®®É¶¡), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
-  Test1$¤W¨®©µ¿ğ<-as.numeric(difftime(Test1$¤W¨®®É¶¡,Test1$ªí©w¤W¨®®É¶¡,units="mins"))
-  Test1$¤U¨®©µ¿ğ<-as.numeric(difftime(Test1$¤U¨®®É¶¡,Test1$ªí©w¤U¨®®É¶¡,units="mins"))
+  }#Orderé¡¯ç¤ºæ¯ä¸€è¶Ÿå°æ‡‰è¡¨å®šæ™‚é–“çš„è»Šæ¬¡é †åº
+  Test1<-Test1%>%mutate(è»Šæ¬¡é †åº=mapvalues(Test1$è¶Ÿæ•¸, c(min(Test1$è¶Ÿæ•¸):max(Test1$è¶Ÿæ•¸)), Order))%>%
+    mutate(è¡¨å®šä¸Šè»Šæ™‚é–“=GoTimeIdeal[cbind(è»Šæ¬¡é †åº,ä¸Šè»Šä»£ç¢¼)])%>%
+    mutate(è¡¨å®šä¸‹è»Šæ™‚é–“=GoTimeIdeal[cbind(è»Šæ¬¡é †åº,ä¸‹è»Šä»£ç¢¼)])%>%
+    mutate(ä¸Šè»Šå»¶é²=è¡¨å®šä¸Šè»Šæ™‚é–“,ä¸‹è»Šå»¶é²=è¡¨å®šä¸‹è»Šæ™‚é–“)
+  Test1$è¡¨å®šä¸Šè»Šæ™‚é–“<-as.POSIXct(strptime(paste0(Date,Test1$è¡¨å®šä¸Šè»Šæ™‚é–“), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
+  Test1$è¡¨å®šä¸‹è»Šæ™‚é–“<-as.POSIXct(strptime(paste0(Date,Test1$è¡¨å®šä¸‹è»Šæ™‚é–“), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
+  Test1$ä¸Šè»Šå»¶é²<-as.numeric(difftime(Test1$ä¸Šè»Šæ™‚é–“,Test1$è¡¨å®šä¸Šè»Šæ™‚é–“,units="mins"))
+  Test1$ä¸‹è»Šå»¶é²<-as.numeric(difftime(Test1$ä¸‹è»Šæ™‚é–“,Test1$è¡¨å®šä¸‹è»Šæ™‚é–“,units="mins"))
   return(Test1)
 }
 
-##¥q¾÷¤@©P¤º©¹ªø©°ªº©µ¿ğ´²§G¹Ï
+##å¸æ©Ÿä¸€å‘¨å…§å¾€é•·åºšçš„å»¶é²æ•£ä½ˆåœ–
 WeekGoTimeDelay<-function(Driver) {
-  Person=names(sort(table(Go1%>%filter(¥q¾÷½s¸¹==Driver)%>%select(¥q¾÷¦WºÙ)),decreasing=T))[1]
-  Row1=Row2=NA; WorkDateTable=table(Go1%>%filter(¥q¾÷½s¸¹==Driver)%>%select(¤W¨®¥æ©ö¤é´Á))
+  Person=names(sort(table(Go1%>%filter(å¸æ©Ÿç·¨è™Ÿ==Driver)%>%select(å¸æ©Ÿåç¨±)),decreasing=T))[1]
+  Row1=Row2=NA; WorkDateTable=table(Go1%>%filter(å¸æ©Ÿç·¨è™Ÿ==Driver)%>%select(ä¸Šè»Šäº¤æ˜“æ—¥æœŸ))
   WorkDate=rownames(WorkDateTable)[WorkDateTable!=0]
   for(i in 1:length(WorkDate))
   {
     Date=WorkDate[i]
-    Row1=c(Row1,GoTimeDelayData(Driver,Date)$¤W¨®¥N½X)
-    Row2=c(Row2,GoTimeDelayData(Driver,Date)$¤W¨®©µ¿ğ)
+    Row1=c(Row1,GoTimeDelayData(Driver,Date)$ä¸Šè»Šä»£ç¢¼)
+    Row2=c(Row2,GoTimeDelayData(Driver,Date)$ä¸Šè»Šå»¶é²)
   }
   
-  Test1=data.table(¤W¨®¥N½X=Row1[-1],¤W¨®©µ¿ğ=Row2[-1])%>%arrange(¤W¨®¥N½X)
+  Test1=data.table(ä¸Šè»Šä»£ç¢¼=Row1[-1],ä¸Šè»Šå»¶é²=Row2[-1])%>%arrange(ä¸Šè»Šä»£ç¢¼)
   {
     par(mar=c(5,8,4,4))
-    plot(floor(range(Test1$¤W¨®©µ¿ğ)),range(1:ncol(GoTimeIdeal)), type="n", yaxt="n", ann=FALSE)
+    plot(floor(range(Test1$ä¸Šè»Šå»¶é²)),range(1:ncol(GoTimeIdeal)), type="n", yaxt="n", ann=FALSE)
     axis(2,at=seq(1,ncol(GoTimeIdeal)),label=colnames(GoTimeIdeal),las=2) 
-    points(y=Test1$¤W¨®¥N½X,x=Test1$¤W¨®©µ¿ğ, pch=16, cex=0.5, col="black")
-    for(i in floor(range(Test1$¤W¨®©µ¿ğ))[1]:floor(range(Test1$¤W¨®©µ¿ğ))[2])
+    points(y=Test1$ä¸Šè»Šä»£ç¢¼,x=Test1$ä¸Šè»Šå»¶é², pch=16, cex=0.5, col="black")
+    for(i in floor(range(Test1$ä¸Šè»Šå»¶é²))[1]:floor(range(Test1$ä¸Šè»Šå»¶é²))[2])
     {abline(v=i,lty=2,col="gray")}
     abline(v=0,lty=2,col="red")
-    title(xlab="©µ¿ğ®É¶¡(¤À)")
-    title(main=paste0("¥q¾÷",Person,"©ó2017-02-12¦Ü2017-02-18ªº¥hµ{¤W¨®©µ¿ğ±¡§Î"))
+    title(xlab="å»¶é²æ™‚é–“(åˆ†)")
+    title(main=paste0("å¸æ©Ÿ",Person,"æ–¼2017-02-12è‡³2017-02-18çš„å»ç¨‹ä¸Šè»Šå»¶é²æƒ…å½¢"))
   }
 }
 WeekGoTimeDelay(1)
 
-#©¹¤¤±[ªº©µ¿ğ¸ê®Æ
+#å¾€ä¸­å´™çš„å»¶é²è³‡æ–™
 BackTimeDelayData<-function(Driver,Date){
   Test1=Back1%>%
-    mutate(¤W¨®¥N½X=mapvalues(¤W¨®¥N½X,c(2:4),rep(1,3)),¤U¨®¥N½X=mapvalues(¤U¨®¥N½X,c(2:4),rep(1,3)))%>%
-    filter(¤W¨®¥N½X>¤U¨®¥N½X,¤W¨®¥N½X<23)%>%
-    filter(¥q¾÷½s¸¹==Driver,¤W¨®¥æ©ö¤é´Á==Date)%>%
-    select(¤W¨®¥æ©ö®É¶¡,¤W¨®©Û©I¯¸¦WºÙ,¤W¨®¥N½X,¤W¨®®É¶¡,
-                 ¤U¨®¥æ©ö®É¶¡,¤U¨®©Û©I¯¸¦WºÙ,¤U¨®¥N½X,¤U¨®®É¶¡)%>%arrange(¤W¨®¥æ©ö®É¶¡)
-  Test1=Test1%>%mutate(½ë¼Æ=rep(1,nrow(Test1)),¨®¦¸¶¶§Ç=rep(1,nrow(Test1)))
+    mutate(ä¸Šè»Šä»£ç¢¼=mapvalues(ä¸Šè»Šä»£ç¢¼,c(2:4),rep(1,3)),ä¸‹è»Šä»£ç¢¼=mapvalues(ä¸‹è»Šä»£ç¢¼,c(2:4),rep(1,3)))%>%
+    filter(ä¸Šè»Šä»£ç¢¼>ä¸‹è»Šä»£ç¢¼,ä¸Šè»Šä»£ç¢¼<23)%>%
+    filter(å¸æ©Ÿç·¨è™Ÿ==Driver,ä¸Šè»Šäº¤æ˜“æ—¥æœŸ==Date)%>%
+    select(ä¸Šè»Šäº¤æ˜“æ™‚é–“,ä¸Šè»Šæ‹›å‘¼ç«™åç¨±,ä¸Šè»Šä»£ç¢¼,ä¸Šè»Šæ™‚é–“,
+                 ä¸‹è»Šäº¤æ˜“æ™‚é–“,ä¸‹è»Šæ‹›å‘¼ç«™åç¨±,ä¸‹è»Šä»£ç¢¼,ä¸‹è»Šæ™‚é–“)%>%arrange(ä¸Šè»Šäº¤æ˜“æ™‚é–“)
+  Test1=Test1%>%mutate(è¶Ÿæ•¸=rep(1,nrow(Test1)),è»Šæ¬¡é †åº=rep(1,nrow(Test1)))
   for(i in 2:nrow(Test1))
   {
     AddTime1=strptime(38,format="%M")-strptime(00,format="%M")
-    CompareTime=Test1$¤W¨®®É¶¡[i]
-    ObTime=Test1$¤W¨®®É¶¡[i-1]
+    CompareTime=Test1$ä¸Šè»Šæ™‚é–“[i]
+    ObTime=Test1$ä¸Šè»Šæ™‚é–“[i-1]
     if(CompareTime-ObTime>AddTime1)
-    {Test1$½ë¼Æ[-c(1:(i-1))]<-1+rep(Test1$½ë¼Æ[i-1],(nrow(Test1)-i+1))}
+    {Test1$è¶Ÿæ•¸[-c(1:(i-1))]<-1+rep(Test1$è¶Ÿæ•¸[i-1],(nrow(Test1)-i+1))}
   }
-  FirstStop=aggregate(¤W¨®¥N½X~½ë¼Æ,data=Test1, max);   Early=NULL
-  for(i in 1:nrow(FirstStop)) {Early=c(Early,which(Test1$½ë¼Æ==FirstStop$½ë¼Æ[i]&Test1$¤W¨®¥N½X==FirstStop$¤W¨®¥N½X[i]))}
-  FSP=Test1[Early,] #FSPÅã¥Ü¨C¤@½ë³Ì¦­¤W¨®¬ö¿ı¤§¨®¯¸ªº­¼«È¸ê®Æ
+  FirstStop=aggregate(ä¸Šè»Šä»£ç¢¼~è¶Ÿæ•¸,data=Test1, max);   Early=NULL
+  for(i in 1:nrow(FirstStop)) {Early=c(Early,which(Test1$è¶Ÿæ•¸==FirstStop$è¶Ÿæ•¸[i]&Test1$ä¸Šè»Šä»£ç¢¼==FirstStop$ä¸Šè»Šä»£ç¢¼[i]))}
+  FSP=Test1[Early,] #FSPé¡¯ç¤ºæ¯ä¸€è¶Ÿæœ€æ—©ä¸Šè»Šç´€éŒ„ä¹‹è»Šç«™çš„ä¹˜å®¢è³‡æ–™
   Order=array(0) 
-  for(i in 1:(max(FSP$½ë¼Æ)))
+  for(i in 1:(max(FSP$è¶Ÿæ•¸)))
   {
-    Num=min(FSP%>%select(¤W¨®¥N½X,½ë¼Æ)%>%filter(½ë¼Æ==i)%>%select(¤W¨®¥N½X))#¨C½ë³Ì¦­°Ñ¦Ò®É¶¡ªº¯¸½s¸¹
-    Arrive1=(FSP%>%filter(½ë¼Æ==i)%>%select(¤W¨®®É¶¡)%>%filter(¤W¨®®É¶¡==min(¤W¨®®É¶¡)))[1,1]#¨C½ë³Ì¦­¯¸³Ì¦­¤W¨®®É¶¡
-    Arrive2=(FSP%>%filter(½ë¼Æ==i)%>%select(¤W¨®®É¶¡)%>%filter(¤W¨®®É¶¡==max(¤W¨®®É¶¡)))[1,1]#¨C½ë³Ì¦­¯¸³Ì±ß¤W¨®®É¶¡
-    Arrive=(Arrive1+(Arrive2-Arrive1)/2)#¤ñ¹ï®É¶¡:¬°³Ì¦­»P³Ì±ßªº¥­§¡­È
+    Num=min(FSP%>%select(ä¸Šè»Šä»£ç¢¼,è¶Ÿæ•¸)%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šä»£ç¢¼))#æ¯è¶Ÿæœ€æ—©åƒè€ƒæ™‚é–“çš„ç«™ç·¨è™Ÿ
+    Arrive1=(FSP%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šæ™‚é–“)%>%filter(ä¸Šè»Šæ™‚é–“==min(ä¸Šè»Šæ™‚é–“)))[1,1]#æ¯è¶Ÿæœ€æ—©ç«™æœ€æ—©ä¸Šè»Šæ™‚é–“
+    Arrive2=(FSP%>%filter(è¶Ÿæ•¸==i)%>%select(ä¸Šè»Šæ™‚é–“)%>%filter(ä¸Šè»Šæ™‚é–“==max(ä¸Šè»Šæ™‚é–“)))[1,1]#æ¯è¶Ÿæœ€æ—©ç«™æœ€æ™šä¸Šè»Šæ™‚é–“
+    Arrive=(Arrive1+(Arrive2-Arrive1)/2)#æ¯”å°æ™‚é–“:ç‚ºæœ€æ—©èˆ‡æœ€æ™šçš„å¹³å‡å€¼
     for(j in 1:nrow(BackTimeIdeal))
     {
-      RealT=strptime(paste0(Date,BackTimeIdeal[j,ncol(BackTimeIdeal)+1-Num]),format="%Y%m%d%H:%M")#°Ñ¦Ò®É¶¡
-      if(j==1) {delta1=strptime(1,format="%H")-strptime(0,format="%H")} #°Ñ¦Ò®É¶¡»P«e¤@¯Z¤§¶¡®t¶Zªº¤@¥b
+      RealT=strptime(paste0(Date,BackTimeIdeal[j,ncol(BackTimeIdeal)+1-Num]),format="%Y%m%d%H:%M")#åƒè€ƒæ™‚é–“
+      if(j==1) {delta1=strptime(1,format="%H")-strptime(0,format="%H")} #åƒè€ƒæ™‚é–“èˆ‡å‰ä¸€ç­ä¹‹é–“å·®è·çš„ä¸€åŠ
       else     {delta1=(RealT-strptime(paste0(Date,BackTimeIdeal[j-1,ncol(BackTimeIdeal)+1-Num]),format="%Y%m%d%H:%M"))/2}
       
-      if(j==nrow(BackTimeIdeal)) {delta2=strptime(1,format="%H")-strptime(0,format="%H")}#°Ñ¦Ò®É¶¡»P«á¤@¯Z¤§¶¡®t¶Zªº¤@¥b
+      if(j==nrow(BackTimeIdeal)) {delta2=strptime(1,format="%H")-strptime(0,format="%H")}#åƒè€ƒæ™‚é–“èˆ‡å¾Œä¸€ç­ä¹‹é–“å·®è·çš„ä¸€åŠ
       else         {delta2=(strptime(paste0(Date,BackTimeIdeal[j+1,ncol(BackTimeIdeal)+1-Num]),format="%Y%m%d%H:%M")-RealT)/2}
       if(delta2<0) {delta2=((strptime(paste0(Date,BackTimeIdeal[j+1,ncol(BackTimeIdeal)+1-Num]),format="%Y%m%d%H:%M")-(strptime(24,format="%H")-strptime(0,format="%H"))*(-1))-RealT)/2}
-      Low=RealT-delta1;    High=RealT+delta2 #¨M©w°Ñ¦Ò®É¶¡ªº°Ï¶¡
-      if((Arrive>Low)&(Arrive<High)){Order[i]=j; break}#¨®¤l¦³¥i¯à¦­¨ì ¦ı¬O¦]¬°¯¸§Ç¸û¦­ ®t§O¤£¤j ©Ò¥H­q¤@­Ó¤p°Ï¶¡§Y¥i
+      Low=RealT-delta1;    High=RealT+delta2 #æ±ºå®šåƒè€ƒæ™‚é–“çš„å€é–“
+      if((Arrive>Low)&(Arrive<High)){Order[i]=j; break}#è»Šå­æœ‰å¯èƒ½æ—©åˆ° ä½†æ˜¯å› ç‚ºç«™åºè¼ƒæ—© å·®åˆ¥ä¸å¤§ æ‰€ä»¥è¨‚ä¸€å€‹å°å€é–“å³å¯
     }
-  }#OrderÅã¥Ü¨C¤@½ë¹ïÀ³ªí©w®É¶¡ªº¨®¦¸¶¶§Ç
-  Test1<-Test1%>%mutate(¨®¦¸¶¶§Ç=mapvalues(Test1$½ë¼Æ, c(min(Test1$½ë¼Æ):max(Test1$½ë¼Æ)), Order))%>%
-    mutate(ªí©w¤W¨®®É¶¡=BackTimeIdeal[cbind(¨®¦¸¶¶§Ç,ncol(BackTimeIdeal)+1-¤W¨®¥N½X)])%>%
-    mutate(ªí©w¤U¨®®É¶¡=BackTimeIdeal[cbind(¨®¦¸¶¶§Ç,ncol(BackTimeIdeal)+1-¤U¨®¥N½X)])%>%
-    mutate(¤W¨®©µ¿ğ=ªí©w¤W¨®®É¶¡,¤U¨®©µ¿ğ=ªí©w¤U¨®®É¶¡)
-  Test1$ªí©w¤W¨®®É¶¡<-as.POSIXct(strptime(paste0(Date,Test1$ªí©w¤W¨®®É¶¡), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
-  Test1$ªí©w¤U¨®®É¶¡<-as.POSIXct(strptime(paste0(Date,Test1$ªí©w¤U¨®®É¶¡), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
-  Test1$¤W¨®©µ¿ğ<-as.numeric(difftime(Test1$¤W¨®®É¶¡,Test1$ªí©w¤W¨®®É¶¡,units="mins"))
-  Test1$¤U¨®©µ¿ğ<-as.numeric(difftime(Test1$¤U¨®®É¶¡,Test1$ªí©w¤U¨®®É¶¡,units="mins"))
+  }#Orderé¡¯ç¤ºæ¯ä¸€è¶Ÿå°æ‡‰è¡¨å®šæ™‚é–“çš„è»Šæ¬¡é †åº
+  Test1<-Test1%>%mutate(è»Šæ¬¡é †åº=mapvalues(Test1$è¶Ÿæ•¸, c(min(Test1$è¶Ÿæ•¸):max(Test1$è¶Ÿæ•¸)), Order))%>%
+    mutate(è¡¨å®šä¸Šè»Šæ™‚é–“=BackTimeIdeal[cbind(è»Šæ¬¡é †åº,ncol(BackTimeIdeal)+1-ä¸Šè»Šä»£ç¢¼)])%>%
+    mutate(è¡¨å®šä¸‹è»Šæ™‚é–“=BackTimeIdeal[cbind(è»Šæ¬¡é †åº,ncol(BackTimeIdeal)+1-ä¸‹è»Šä»£ç¢¼)])%>%
+    mutate(ä¸Šè»Šå»¶é²=è¡¨å®šä¸Šè»Šæ™‚é–“,ä¸‹è»Šå»¶é²=è¡¨å®šä¸‹è»Šæ™‚é–“)
+  Test1$è¡¨å®šä¸Šè»Šæ™‚é–“<-as.POSIXct(strptime(paste0(Date,Test1$è¡¨å®šä¸Šè»Šæ™‚é–“), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
+  Test1$è¡¨å®šä¸‹è»Šæ™‚é–“<-as.POSIXct(strptime(paste0(Date,Test1$è¡¨å®šä¸‹è»Šæ™‚é–“), format="%Y%m%d%H:%M"), tz="Asia/Taipei")
+  Test1$ä¸Šè»Šå»¶é²<-as.numeric(difftime(Test1$ä¸Šè»Šæ™‚é–“,Test1$è¡¨å®šä¸Šè»Šæ™‚é–“,units="mins"))
+  Test1$ä¸‹è»Šå»¶é²<-as.numeric(difftime(Test1$ä¸‹è»Šæ™‚é–“,Test1$è¡¨å®šä¸‹è»Šæ™‚é–“,units="mins"))
   return(Test1)
 }
 
-##¥q¾÷¤@©P¤º©¹¤¤±[ªº©µ¿ğ´²§G¹Ï
+##å¸æ©Ÿä¸€å‘¨å…§å¾€ä¸­å´™çš„å»¶é²æ•£ä½ˆåœ–
 WeekBackTimeDelay<-function(Driver) {
-  Person=names(sort(table(Back1%>%filter(¥q¾÷½s¸¹==Driver)%>%select(¥q¾÷¦WºÙ)),decreasing=T))[1]
-  Row1=Row2=NA; WorkDateTable=table(Back1%>%filter(¥q¾÷½s¸¹==Driver)%>%select(¤W¨®¥æ©ö¤é´Á))
+  Person=names(sort(table(Back1%>%filter(å¸æ©Ÿç·¨è™Ÿ==Driver)%>%select(å¸æ©Ÿåç¨±)),decreasing=T))[1]
+  Row1=Row2=NA; WorkDateTable=table(Back1%>%filter(å¸æ©Ÿç·¨è™Ÿ==Driver)%>%select(ä¸Šè»Šäº¤æ˜“æ—¥æœŸ))
   WorkDate=rownames(WorkDateTable)[WorkDateTable!=0]
   for(i in 1:length(WorkDate))
   {
     Date=WorkDate[i]
-    Row1=c(Row1,BackTimeDelayData(Driver,Date)$¤W¨®¥N½X)
-    Row2=c(Row2,BackTimeDelayData(Driver,Date)$¤W¨®©µ¿ğ)
+    Row1=c(Row1,BackTimeDelayData(Driver,Date)$ä¸Šè»Šä»£ç¢¼)
+    Row2=c(Row2,BackTimeDelayData(Driver,Date)$ä¸Šè»Šå»¶é²)
   }
   
-  Test1=data.table(¤W¨®¥N½X=Row1[-1],¤W¨®©µ¿ğ=Row2[-1])%>%arrange(¤W¨®¥N½X)
+  Test1=data.table(ä¸Šè»Šä»£ç¢¼=Row1[-1],ä¸Šè»Šå»¶é²=Row2[-1])%>%arrange(ä¸Šè»Šä»£ç¢¼)
   {
     par(mar=c(5,8,4,4))
-    plot(floor(range(Test1$¤W¨®©µ¿ğ)),range(1:ncol(BackTimeIdeal)), type="n", yaxt="n", ann=FALSE)
+    plot(floor(range(Test1$ä¸Šè»Šå»¶é²)),range(1:ncol(BackTimeIdeal)), type="n", yaxt="n", ann=FALSE)
     axis(2,at=seq(1,ncol(BackTimeIdeal)),label=colnames(BackTimeIdeal),las=2) 
-    points(y=Test1$¤W¨®¥N½X,x=Test1$¤W¨®©µ¿ğ, pch=16, cex=0.5, col="black")
-    for(i in floor(range(Test1$¤W¨®©µ¿ğ))[1]:floor(range(Test1$¤W¨®©µ¿ğ))[2])
+    points(y=Test1$ä¸Šè»Šä»£ç¢¼,x=Test1$ä¸Šè»Šå»¶é², pch=16, cex=0.5, col="black")
+    for(i in floor(range(Test1$ä¸Šè»Šå»¶é²))[1]:floor(range(Test1$ä¸Šè»Šå»¶é²))[2])
     {abline(v=i,lty=2,col="gray")}
     abline(v=0,lty=2,col="red")
-    title(xlab="©µ¿ğ®É¶¡(¤À)")
-    title(main=paste0("¥q¾÷",Person,"©ó2017-02-12¦Ü2017-02-18ªº¥hµ{¤W¨®©µ¿ğ±¡§Î"))
+    title(xlab="å»¶é²æ™‚é–“(åˆ†)")
+    title(main=paste0("å¸æ©Ÿ",Person,"æ–¼2017-02-12è‡³2017-02-18çš„å»ç¨‹ä¸Šè»Šå»¶é²æƒ…å½¢"))
   }
 }
 
@@ -324,12 +324,12 @@ GoDelayTable=BackDelayTable=NULL
 for(Driver in 1:14){
   for(Date in 20170212:20170218)
   {
-    #Á×§K¦]¥q¾÷½ü¥ğ¦Ó³y¦¨µL¸ê®Æªº±¡ªp
-    tryCatch({Test1=GoTimeDelayData(Driver,Date)%>%dplyr::select(¤W¨®¥N½X,¤U¨®¥N½X,¤W¨®©µ¿ğ,¤U¨®©µ¿ğ)%>%
-      mutate(Á`©µ¿ğ=¤U¨®©µ¿ğ-¤W¨®©µ¿ğ)%>%dplyr::select(¤W¨®¥N½X,¤U¨®¥N½X,Á`©µ¿ğ)},
+    #é¿å…å› å¸æ©Ÿè¼ªä¼‘è€Œé€ æˆç„¡è³‡æ–™çš„æƒ…æ³
+    tryCatch({Test1=GoTimeDelayData(Driver,Date)%>%dplyr::select(ä¸Šè»Šä»£ç¢¼,ä¸‹è»Šä»£ç¢¼,ä¸Šè»Šå»¶é²,ä¸‹è»Šå»¶é²)%>%
+      mutate(ç¸½å»¶é²=ä¸‹è»Šå»¶é²-ä¸Šè»Šå»¶é²)%>%dplyr::select(ä¸Šè»Šä»£ç¢¼,ä¸‹è»Šä»£ç¢¼,ç¸½å»¶é²)},
              error=function(e){Test1<<-NULL})
-    tryCatch({Test2=BackTimeDelayData(Driver,Date)%>%dplyr::select(¤W¨®¥N½X,¤U¨®¥N½X,¤W¨®©µ¿ğ,¤U¨®©µ¿ğ)%>%
-      mutate(Á`©µ¿ğ=¤U¨®©µ¿ğ-¤W¨®©µ¿ğ)%>%dplyr::select(¤W¨®¥N½X,¤U¨®¥N½X,Á`©µ¿ğ)},
+    tryCatch({Test2=BackTimeDelayData(Driver,Date)%>%dplyr::select(ä¸Šè»Šä»£ç¢¼,ä¸‹è»Šä»£ç¢¼,ä¸Šè»Šå»¶é²,ä¸‹è»Šå»¶é²)%>%
+      mutate(ç¸½å»¶é²=ä¸‹è»Šå»¶é²-ä¸Šè»Šå»¶é²)%>%dplyr::select(ä¸Šè»Šä»£ç¢¼,ä¸‹è»Šä»£ç¢¼,ç¸½å»¶é²)},
       error=function(e){Test2<<-NULL})
     GoDelayTable=rbind(GoDelayTable,Test1)
     BackDelayTable=rbind(BackDelayTable,Test2)
@@ -341,18 +341,18 @@ Mean2=Sd2=Number2=matrix(0,ncol(BackTimeIdeal),ncol(BackTimeIdeal));
 for(On in 1:ncol(GoTimeIdeal)){
   for(Off in 1:ncol(GoTimeIdeal))
   {
-    Test1=GoDelayTable%>%filter(¤W¨®¥N½X==On,¤U¨®¥N½X==Off)
-    Mean1[On,Off]=mean(Test1$Á`©µ¿ğ)
-    Sd1[On,Off]=sd(Test1$Á`©µ¿ğ)
+    Test1=GoDelayTable%>%filter(ä¸Šè»Šä»£ç¢¼==On,ä¸‹è»Šä»£ç¢¼==Off)
+    Mean1[On,Off]=mean(Test1$ç¸½å»¶é²)
+    Sd1[On,Off]=sd(Test1$ç¸½å»¶é²)
     Number1[On,Off]=nrow(Test1)
   }
 }
 for(On in 1:ncol(BackTimeIdeal)){
   for(Off in 1:ncol(BackTimeIdeal))
   {
-    Test2=BackDelayTable%>%filter(¤W¨®¥N½X==On,¤U¨®¥N½X==Off)
-    Mean2[On,Off]=mean(Test2$Á`©µ¿ğ)
-    Sd2[On,Off]=sd(Test2$Á`©µ¿ğ)
+    Test2=BackDelayTable%>%filter(ä¸Šè»Šä»£ç¢¼==On,ä¸‹è»Šä»£ç¢¼==Off)
+    Mean2[On,Off]=mean(Test2$ç¸½å»¶é²)
+    Sd2[On,Off]=sd(Test2$ç¸½å»¶é²)
     Number2[On,Off]=nrow(Test2)
   }
 }
@@ -363,36 +363,36 @@ my_palette2=colorRampPalette(c("lavenderblush1", "red2"))(n=100)
 rownames(Mean1)=colnames(Mean1)=rownames(Sd1)=colnames(Sd1)=rownames(Number1)=colnames(Number1)=colnames(GoTimeIdeal)
 rownames(Mean2)=colnames(Mean2)=rownames(Sd2)=colnames(Sd2)=rownames(Number2)=colnames(Number2)=colnames(BackTimeIdeal)
 heatmap.2(Mean1,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-          tracecol="black",margins=c(8,8),main="©¹ªø©°¦æ¾p®É¶¡®t¶Zªº¥­§¡­È",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€é•·åºšè¡Œé§›æ™‚é–“å·®è·çš„å¹³å‡å€¼",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 heatmap.2(Sd1,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette2,
-          tracecol="black",margins=c(8,8),main="©¹ªø©°¦æ¾p®É¶¡®t¶Zªº¼Ğ·Ç®t",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€é•·åºšè¡Œé§›æ™‚é–“å·®è·çš„æ¨™æº–å·®",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 heatmap.2(Number1,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette2,
-          tracecol="black",margins=c(8,8),main="©¹ªø©°¸ê®Æ­Ó¼Æ",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€é•·åºšè³‡æ–™å€‹æ•¸",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 DelayStat1=Mean1/(Sd1/sqrt(Number1))
 DelayStat1[DelayStat1==Inf]=NA
 heatmap.2(DelayStat1,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-          tracecol="black",margins=c(8,8),main="©¹ªø©°¦æ¾p®É¶¡®t¶Zªº²Î­p¶q",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€é•·åºšè¡Œé§›æ™‚é–“å·®è·çš„çµ±è¨ˆé‡",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 
 #heatmap.2((abs(DelayStat1)>5)*DelayStat,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-#          tracecol="black",margins=c(8,8),main="©¹ªø©°¦æ¾p®É¶¡®t¶Zªº²Î­p¶q",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+#          tracecol="black",margins=c(8,8),main="å¾€é•·åºšè¡Œé§›æ™‚é–“å·®è·çš„çµ±è¨ˆé‡",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 ###
 heatmap.2(Mean2,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-          tracecol="black",margins=c(8,8),main="©¹¤¤±[¦æ¾p®É¶¡®t¶Zªº¥­§¡­È",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€ä¸­å´™è¡Œé§›æ™‚é–“å·®è·çš„å¹³å‡å€¼",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 heatmap.2(Sd2,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette2,
-          tracecol="black",margins=c(8,8),main="©¹¤¤±[¦æ¾p®É¶¡®t¶Zªº¼Ğ·Ç®t",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€ä¸­å´™è¡Œé§›æ™‚é–“å·®è·çš„æ¨™æº–å·®",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 heatmap.2(Number2,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette2,
-          tracecol="black",margins=c(8,8),main="©¹¤¤±[¸ê®Æ­Ó¼Æ",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€ä¸­å´™è³‡æ–™å€‹æ•¸",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 DelayStat2=Mean2/(Sd2/sqrt(Number2))
 DelayStat2[DelayStat2==Inf]=NA
 heatmap.2(DelayStat2,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-          tracecol="black",margins=c(8,8),main="©¹¤¤±[¦æ¾p®É¶¡®t¶Zªº²Î­p¶q",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+          tracecol="black",margins=c(8,8),main="å¾€ä¸­å´™è¡Œé§›æ™‚é–“å·®è·çš„çµ±è¨ˆé‡",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 
 #heatmap.2((abs(DelayStat2)>5)*DelayStat,dendrogram='none',Rowv=F,Colv=F,trace='none',col=my_palette1,
-#          tracecol="black",margins=c(8,8),main="©¹¤¤±[¦æ¾p®É¶¡®t¶Zªº²Î­p¶q",xlab="¤U¨®", ylab="¤W¨®",keysize=1)
+#          tracecol="black",margins=c(8,8),main="å¾€ä¸­å´™è¡Œé§›æ™‚é–“å·®è·çš„çµ±è¨ˆé‡",xlab="ä¸‹è»Š", ylab="ä¸Šè»Š",keysize=1)
 ##
 ################
-Temp=data.table(¤W¤U¨®=c(Go1$¤W¨®¥N½X,Go1$¤U¨®¥N½X))
-on_count <- aggregate(Temp$¤W¤U¨®, by = list(Temp$¤W¤U¨®), length) 
+Temp=data.table(ä¸Šä¸‹è»Š=c(Go1$ä¸Šè»Šä»£ç¢¼,Go1$ä¸‹è»Šä»£ç¢¼))
+on_count <- aggregate(Temp$ä¸Šä¸‹è»Š, by = list(Temp$ä¸Šä¸‹è»Š), length) 
 
 Data2$latitude<- as.numeric(as.character(Data2$latitude))
 Data2$longitude<- as.numeric(as.character(Data2$longitude))
@@ -427,6 +427,6 @@ OnMap + geom_path(aes(x = longitude, y = latitude), data = stop_100, alpha = .7)
   scale_y_continuous(limits = range(stop_100$latitude), expand = c(-.005, .005)) +
   geom_point(aes(x = lng, y = lat, colour = frq), data = df, alpha = .9, size = 3.5) + 
   scale_colour_gradientn(colours = colorRampPalette(c("green", "red"))(10))+
-  labs(title = "¾ï12©¹ªø©°¦U¯¸¤W¤U¨®ÀW²v¹Ï", x = "longtitude", y = "latitude") + 
+  labs(title = "æ©˜12å¾€é•·åºšå„ç«™ä¸Šä¸‹è»Šé »ç‡åœ–", x = "longtitude", y = "latitude") + 
   geom_segment(data = rt_dir, aes(x = lng_0, xend = lng_1, y = lat_0, yend = lat_1),
                arrow = arrow(length = unit(0.1,"cm")))
